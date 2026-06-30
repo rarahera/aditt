@@ -1,51 +1,168 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adit Lagi Bete</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciyee... Ada yang Bete 🤭</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- PAGE 1 -->
+<!-- ================= PAGE 1 ================= -->
 
-<section id="page1">
+<section id="page1" class="page active">
 
-<h1>🤭</h1>
+    <h1>🤭</h1>
 
-<h2>Ciyeee...</h2>
+    <h2>Ciyeee...</h2>
 
-<p>Ada cowok lagi bete nih...</p>
+    <p>Ada cowok lagi bete nih 😒</p>
 
-<button onclick="nextPage()">
-Lihat →
-</button>
+    <button onclick="nextPage(2)">
+        Lihat siapa ➜
+    </button>
+
+</section>
+
+
+<!-- ================= PAGE 2 ================= -->
+
+<section id="page2" class="page">
+
+    <div id="trex">
+        🦖
+    </div>
+
+    <h2 id="marahText">
+        GRRRRRR!! 😤
+    </h2>
+
+    <button id="gangguBtn">
+        Gangguin 😈
+    </button>
+
+    <button id="lanjut1" onclick="nextPage(3)" style="display:none;">
+        Lanjut ➜
+    </button>
 
 </section>
 
-<!-- PAGE 2 -->
 
-<section id="page2">
 
-<div class="trex">
-🦖
-</div>
+<!-- ================= PAGE 3 ================= -->
 
-<h2 id="dialog">
-GRRRRRRRR!!!
-</h2>
+<section id="page3" class="page">
 
-<button id="poke">
-Gangguin T-Rex 😈
-</button>
+    <h2 id="tebakText">
+        Hmm...
+    </h2>
 
-<button id="next" style="display:none;">
-Lanjut →
-</button>
+    <button id="tebakBtn">
+        Lanjut ➜
+    </button>
 
 </section>
+
+
+
+<!-- ================= PAGE 4 ================= -->
+
+<section id="page4" class="page">
+
+    <h2 id="loadingText">
+        Mencari identitas...
+    </h2>
+
+    <h1 id="percent">
+        0%
+    </h1>
+
+</section>
+
+
+
+
+<!-- ================= PAGE 5 ================= -->
+
+<section id="page5" class="page">
+
+    <h2>
+        🤭
+    </h2>
+
+    <h1>
+        IDENTITAS DITEMUKAN
+    </h1>
+
+    <h2 class="nama">
+        ADIT
+    </h2>
+
+    <p>
+        Nah... bener kan 🤣
+    </p>
+
+    <button onclick="nextPage(6)">
+        Lanjut ➜
+    </button>
+
+</section>
+
+
+
+
+<!-- ================= PAGE 6 ================= -->
+
+<section id="page6" class="page">
+
+    <div class="trexHappy">
+        🦖😒
+    </div>
+
+    <h2>
+        Kayaknya dia butuh coklat deh...
+    </h2>
+
+    <button id="coklatBtn">
+        Kasih Coklat 🍫
+    </button>
+
+    <p id="happyText"></p>
+
+    <button id="endingBtn"
+            onclick="nextPage(7)"
+            style="display:none;">
+        Lanjut ➜
+    </button>
+
+</section>
+
+
+
+
+
+<!-- ================= PAGE 7 ================= -->
+
+<section id="page7" class="page">
+
+    <h1>🎉</h1>
+
+    <h2>
+        Nah gitu dong...
+    </h2>
+
+    <p>
+        Senyum lebih cocok buat kamu 😊
+    </p>
+
+    <h3>
+        Semangat ya Dit ❤️
+    </h3>
+
+</section>
+
+
 
 <script src="script.js"></script>
 
