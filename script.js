@@ -1,86 +1,78 @@
-alert("Script berhasil dimuat!");
-// ==========================
+// ===============================
 // Ambil semua elemen
-// ==========================
+// ===============================
 
 const pages = document.querySelectorAll(".page");
 
-const lihatBtn = document.getElementById("lihatBtn");
-
-lihatBtn.addEventListener("click", () => {
-    alert("Tombol berhasil diklik!");
-});
-const gangguBtn = document.getElementById("gangguBtn");
-const tebakBtn = document.getElementById("tebakBtn");
-const lanjutCoklat = document.getElementById("lanjutCoklat");
-const coklatBtn = document.getElementById("coklatBtn");
-
-const trex = document.getElementById("trex");
-const dialog = document.getElementById("dialog");
-const tebak = document.getElementById("tebak");
-const loading = document.getElementById("loading");
-const happyTrex = document.getElementById("happyTrex");
-const happyText = document.getElementById("happyText");
-
-// ==========================
-// Fungsi pindah halaman
-// ==========================
-
 function showPage(id){
-
-    pages.forEach(page=>page.classList.remove("active"));
+    pages.forEach(page=>{
+        page.classList.remove("active");
+    });
 
     document.getElementById(id).classList.add("active");
-
 }
 
-// ==========================
+// ===============================
 // PAGE 1
-// ==========================
+// ===============================
 
-lihatBtn.addEventListener("click",()=>{
+document.getElementById("lihatBtn").addEventListener("click", function(){
 
     showPage("page2");
 
 });
 
-// ==========================
+// ===============================
 // PAGE 2
-// ==========================
+// ===============================
+
+const dialog = document.getElementById("dialog");
+const trex = document.getElementById("trex");
+const gangguBtn = document.getElementById("gangguBtn");
 
 let marah = 0;
 
-const dialogMarah = [
+const kata = [
 
 "APA SIH!! 😠",
 
-"AKU LAGI BETE TAU!! 😤",
+"AKU LAGI BETE!! 😤",
 
 "JANGAN GANGGU!! 😡",
 
-"HUFFFF!! 💨",
+"HUFFFFF!! 💨",
 
 "Capek juga marah-marah... 😮‍💨"
 
 ];
 
-gangguBtn.addEventListener("click",()=>{
+gangguBtn.addEventListener("click", function(){
 
-    trex.classList.add("shake");
+    if(marah < 4){
 
-    dialog.innerHTML = dialogMarah[marah];
+        dialog.innerHTML = kata[marah];
 
-    marah++;
+        trex.classList.add("shake");
 
-    if(marah >= dialogMarah.length){
+        setTimeout(()=>{
 
-        trex.classList.remove("shake");
+            trex.classList.remove("shake");
 
-        trex.innerHTML="🦖😮‍💨";
+        },300);
 
-        gangguBtn.innerHTML="Lanjut ➜";
+        marah++;
 
-        gangguBtn.onclick=function(){
+    }
+
+    else{
+
+        dialog.innerHTML = kata[4];
+
+        trex.innerHTML = "🦖😮‍💨";
+
+        gangguBtn.innerHTML = "Lanjut ➜";
+
+        gangguBtn.onclick = function(){
 
             showPage("page3");
 
@@ -90,29 +82,32 @@ gangguBtn.addEventListener("click",()=>{
 
 });
 
-// ==========================
+// ===============================
 // PAGE 3
-// ==========================
+// ===============================
 
-let tebakStep=0;
+const tebak = document.getElementById("tebak");
+const tebakBtn = document.getElementById("tebakBtn");
 
-tebakBtn.addEventListener("click",()=>{
+let step = 0;
 
-    tebakStep++;
+tebakBtn.addEventListener("click",function(){
 
-    if(tebakStep==1){
+    step++;
+
+    if(step==1){
 
         tebak.innerHTML="Kayaknya T-Rex ini...";
 
     }
 
-    else if(tebakStep==2){
+    else if(step==2){
 
         tebak.innerHTML="Mirip seseorang deh... 🤔";
 
     }
 
-    else if(tebakStep==3){
+    else if(step==3){
 
         tebak.innerHTML="Namanya...";
 
@@ -122,71 +117,74 @@ tebakBtn.addEventListener("click",()=>{
 
         showPage("page4");
 
-        mulaiLoading();
+        loading();
 
     }
 
 });
 
-// ==========================
-// Loading
-// ==========================
+// ===============================
+// PAGE 4
+// ===============================
 
-function mulaiLoading(){
+function loading(){
 
-    let persen=0;
+    const persen=document.getElementById("loading");
 
-    loading.innerHTML="0%";
+    let angka=0;
 
-    const timer=setInterval(()=>{
+    const timer=setInterval(function(){
 
-        persen+=5;
+        angka+=10;
 
-        loading.innerHTML=persen+"%";
+        persen.innerHTML=angka+"%";
 
-        if(persen>=100){
+        if(angka>=100){
 
             clearInterval(timer);
 
-            setTimeout(()=>{
+            setTimeout(function(){
 
                 showPage("page5");
 
-            },700);
+            },500);
 
         }
 
-    },80);
+    },150);
 
 }
 
-// ==========================
+// ===============================
 // PAGE 5
-// ==========================
+// ===============================
 
-lanjutCoklat.addEventListener("click",()=>{
+document.getElementById("lanjutCoklat").addEventListener("click",function(){
 
     showPage("page6");
 
 });
 
-// ==========================
+// ===============================
 // PAGE 6
-// ==========================
+// ===============================
 
-coklatBtn.addEventListener("click",()=>{
+const happyTrex=document.getElementById("happyTrex");
+const happyText=document.getElementById("happyText");
+
+document.getElementById("coklatBtn").addEventListener("click",function(){
 
     happyTrex.innerHTML="🦖🍫";
 
     happyText.innerHTML="Hmm...";
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         happyText.innerHTML="Enak juga ya coklatnya 🍫";
 
     },1000);
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         happyTrex.innerHTML="🦖😊";
 
@@ -194,10 +192,10 @@ coklatBtn.addEventListener("click",()=>{
 
     },2500);
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         showPage("page7");
 
-    },4500);
+    },4200);
 
 });
