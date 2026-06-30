@@ -6,6 +6,10 @@ alert("Script berhasil dimuat!");
 const pages = document.querySelectorAll(".page");
 
 const lihatBtn = document.getElementById("lihatBtn");
+
+lihatBtn.addEventListener("click", () => {
+    alert("Tombol berhasil diklik!");
+});
 const gangguBtn = document.getElementById("gangguBtn");
 const tebakBtn = document.getElementById("tebakBtn");
 const lanjutCoklat = document.getElementById("lanjutCoklat");
