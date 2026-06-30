@@ -1,40 +1,47 @@
-const pages = document.querySelectorAll(".page");
+document.addEventListener("DOMContentLoaded", () => {
 
-function showPage(id){
-  pages.forEach(p => p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
+  const pages = document.querySelectorAll(".page");
 
-// PAGE 1 -> PAGE 2
-document.getElementById("btnSiapa").addEventListener("click", () => {
-  showPage("page2");
-});
+  function showPage(id){
+    pages.forEach(p => p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
 
-// PAGE 2 story
-document.getElementById("btnNext").addEventListener("click", () => {
-  document.getElementById("transformText").innerText =
-    "eh ternyata dia lagi berubah... 🧬";
-  
-  setTimeout(() => {
-    showPage("page3");
-  }, 1000);
-});
+  const btnSiapa = document.getElementById("btnSiapa");
+  const btnNext = document.getElementById("btnNext");
+  const btnCoklat = document.getElementById("btnCoklat");
 
-// PAGE 3 -> loading
-document.getElementById("btnCoklat").addEventListener("click", () => {
-  showPage("loadingPage");
+  // PAGE 1
+  btnSiapa.addEventListener("click", () => {
+    showPage("page2");
+  });
 
-  let text = document.getElementById("loadingText");
-  let dots = 0;
+  // PAGE 2
+  btnNext.addEventListener("click", () => {
+    document.getElementById("transformText").innerText =
+      "eh ternyata dia lagi berubah... 🧬";
 
-  let interval = setInterval(() => {
-    dots++;
-    text.innerText = "memproses mood stabilizer" + ".".repeat(dots);
-    if(dots === 3) dots = 0;
-  }, 500);
+    setTimeout(() => {
+      showPage("page3");
+    }, 800);
+  });
 
-  setTimeout(() => {
-    clearInterval(interval);
-    showPage("pageFinal");
-  }, 4000);
+  // PAGE 3
+  btnCoklat.addEventListener("click", () => {
+    showPage("loadingPage");
+
+    let text = document.getElementById("loadingText");
+    let dots = 0;
+
+    let interval = setInterval(() => {
+      dots = (dots + 1) % 4;
+      text.innerText = "memproses mood stabilizer" + ".".repeat(dots);
+    }, 400);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      showPage("pageFinal");
+    }, 3500);
+  });
+
 });
